@@ -20,6 +20,19 @@ const Login = () => {
     }
   }
 
+  const onLoginWithGoogle = async (e) => {
+    e.preventDefault()
+    try {
+      let result = await signInWithGoogle()
+      console.log(result)
+      navigate("/")
+    } catch (e) {
+      console.log("*******")
+      console.log(e)
+      alert(e)
+    }
+  }
+
   return (
     <>
       <main>
@@ -56,9 +69,7 @@ const Login = () => {
                 <button onClick={onLogin}>Login</button>
                 <button
                   className='bg-red-500 hover:bg-red-600 w-full py-2 text-white'
-                  onClick={() => {
-                    signInWithGoogle()
-                  }}
+                  onClick={onLoginWithGoogle}
                 >
                   Sign in with Google
                 </button>

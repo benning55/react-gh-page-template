@@ -20,17 +20,18 @@ const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
 const provider = new GoogleAuthProvider()
 
-export const signInWithGoogle = () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // Handle successful sign-in
-      const user = result.user
-      console.log("Signed in with Google:", user)
-    })
-    .catch((error) => {
-      // Handle sign-in error
-      console.error("Error signing in with Google:", error)
-    })
+export const signInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider)
+    const user = result.user
+    console.log(user.providerData)
+    return 200
+  } catch (error) {
+    const errorCode = error.code
+    const errorMessage = error.message
+    console.log(errorCode, errorMessage)
+    throw new Error(errorMessage)
+  }
 }
 
 export const signInWithEmailPassword = async (email, password) => {
