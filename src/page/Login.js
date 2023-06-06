@@ -64,18 +64,18 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-
-              <div>
-                <button onClick={onLogin}>Login</button>
-                <button
-                  className='bg-red-500 hover:bg-red-600 w-full py-2 text-white'
-                  onClick={onLoginWithGoogle}
-                >
-                  Sign in with Google
-                </button>
-              </div>
             </form>
 
+            <div>
+              <button onClick={onLogin}>Login</button>
+              <button
+                className='bg-red-500 hover:bg-red-600 w-full py-2 text-white'
+                onClick={onLoginWithGoogle}
+              >
+                Sign in with Google
+              </button>
+            </div>
+            
             <p className='text-sm text-white text-center'>
               No account yet? <NavLink to='/signup'>Sign up</NavLink>
             </p>
